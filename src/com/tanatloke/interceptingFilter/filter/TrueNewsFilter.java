@@ -3,10 +3,9 @@ package com.tanatloke.interceptingFilter.filter;
 import com.tanatloke.interceptingFilter.News;
 
 /**
- * Created by Administrator on 21-Jan-16.
+ * Created by PorPaul on 2/3/2559.
  */
-public class ExPmNewsFilter implements  ThaiFilter {
-
+public class TrueNewsFilter implements  ThaiFilter{
     @Override
     public void manipulateNews(News news) {
 

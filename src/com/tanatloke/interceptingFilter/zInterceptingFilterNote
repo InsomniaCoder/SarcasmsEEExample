@@ -1,0 +1,35 @@
+Problem
+
+You want to intercept and manipulate a request and a response before and after the request is processed.
+
+Forces
+
+You want centralized, common processing across requests, such as checking the data-encoding scheme of each request,
+logging information about each request, or compressing an outgoing response.
+You want pre and postprocessing components loosely coupled with core request-handling services to facilitate unobtrusive addition
+and removal.
+You want pre and postprocessing components independent of each other and self contained to facilitate reuse.
+
+Solution
+
+Use an Intercepting Filter as a pluggable filter to pre and postprocess requests and responses. A filter manager combines
+loosely coupled filters in a chain, delegating control to  the appropriate filter. In this way, you can add, remove,
+and combine these filters in various ways without changing existing code.
+
+***credit***
+http://corej2eepatterns.com/
+
+Intercepting Filter vs Front Controller
+
+I use Intercepting Filter when I want loosely-coupled pre and post processors for request/response handling.
+Intercepting Filters offer pluggability and configurability so that I can add/remove filters non-intrusively (declaratively).
+Filters are ideal if the operations they perform are well-encapsulated and discrete so that I can plug and play as I want.
+For all other common request processing, a Front Controller is the way to go for me. Front Controller avoids duplication of
+code in multiple views. Typically, once I implement a Front Controller, I pretty much want to leave it alone as much as possible.
+Over time, if I start seeing lots of conditional switching (if-then-else or case/switch) in my Front Controller,
+then I might refactor conditional logic using Intercepting Filters or delegate the conditional processing to helpers
+using the Command and Controller Strategy [see Front Controller pattern] implementing a Command [GoF] based services layer.
+Bottomline: I want my Front Controllers to be straightforward, simple and easy to maintain, and my Intercepting Filters to be
+loosely-coupled, pluggable and stateless.
+
+Credit : https://deepakalur.wordpress.com/2005/03/23/to-control-or-to-filter-why-not-both/
