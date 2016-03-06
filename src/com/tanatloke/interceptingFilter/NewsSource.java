@@ -12,7 +12,7 @@ public class NewsSource {
     }
 
     public void sendNews(News news){
-        System.out.println("News Source is sending message : "+news);
+        System.out.println("News Source is sending message : "+news.getNews());
         filterManager.sendNewsThroughAllFilters(news);
     }
 }
